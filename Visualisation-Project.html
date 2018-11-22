@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="map"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+		
+		<style>
+		
+		svg {
+			background: #fff;
+			width: 900px;
+			height: 500px;
+			padding-left: 300px;
+		}
+		
+		#ireland path{
+			stroke: #fff;
+			stroke-width: .25px;
+		}
+		
+		.q0-9{fill:rgb(247,252,245)}
+		.q1-9{fill:rgb(229,245,224)}
+		.q2-9{fill:rgb(199,233,192)}
+		.q3-9{fill:rgb(161,217,155)}
+		.q4-9{fill:rgb(116,196,118)}
+		.q5-9{fill:rgb(65,171,93)}
+		.q6-9{fill:rgb(35,139,69)}
+		.q7-9{fill:rgb(0,109,44)}
+		.q8-9{fill:rgb(0,68,27)}
+		
+		header {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			text-align: center;
+		}
+		
+</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Irish Choropleth Example</title>
+		<script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+</head>
+<body>
+
+	<header><h1>Irish Weather</h2></header>
+
+	<div id="chart"></div>
+		<script type="text/javascript" src="choropleth.js"></script>
+</body>
+</html>
+		
+		<script>
+		consoloe.
+			var data;
+
+			var proj = d3.geo.albers()
+					  .origin([-7.9,53.3])
+					  .scale(6000)
+					  .translate([450,270]);
+			var path = d3.geo.path().projection(proj);
+
+			var svg = d3.select("#chart")
+			  .append("svg");
+
+			var counties = svg.append("g")
+				.attr("id", "ireland");
+
+
+			function quantize(d) {
+			  return "q" + Math.min(8, ~~(data[d.properties.id] * 9 / 21)) + "-9";
+			}
+
+		</script>
+    </body>
+</html>
